@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Settings, Eye, Download, Save, Upload, FileJson } from 'lucide-react';
+import { Settings, Eye, Download, Upload, FileJson } from 'lucide-react';
 import { useDeckStore } from '../../store/deckStore';
 import SettingsModal from '../Modals/SettingsModal';
 import { exportDeckToHTML } from '../../utils/export';
@@ -65,7 +65,7 @@ const TopBar = () => {
           <h1>📽️ Reveal.js Builder</h1>
           <span className="deck-title">{deck.metadata.title}</span>
         </div>
-        
+
         <div className="top-bar-actions">
           <button
             onClick={() => setShowSettings(true)}
@@ -74,9 +74,9 @@ const TopBar = () => {
           >
             <Settings size={18} />
           </button>
-          
+
           <div className="divider-vertical"></div>
-          
+
           <button
             onClick={handleImportJSON}
             className="icon-button"
@@ -85,7 +85,7 @@ const TopBar = () => {
             <Upload size={18} />
             <span className="button-label">Import</span>
           </button>
-          
+
           <button
             onClick={handleExportJSON}
             className="icon-button"
@@ -94,7 +94,7 @@ const TopBar = () => {
             <FileJson size={18} />
             <span className="button-label">JSON</span>
           </button>
-          
+
           <button
             onClick={handleExportHTML}
             className="primary icon-button"
@@ -103,9 +103,9 @@ const TopBar = () => {
             <Download size={18} />
             <span className="button-label">Export HTML</span>
           </button>
-          
+
           <div className="divider-vertical"></div>
-          
+
           <button
             onClick={() => setPreviewMode(!previewMode)}
             className={previewMode ? 'success icon-button' : 'icon-button'}
@@ -116,7 +116,7 @@ const TopBar = () => {
           </button>
         </div>
       </div>
-      
+
       {showSettings && <SettingsModal onClose={() => setShowSettings(false)} />}
     </>
   );

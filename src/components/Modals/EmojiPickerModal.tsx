@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { X, Search } from 'lucide-react';
+import { X } from 'lucide-react';
 import EmojiPicker, { EmojiClickData } from 'emoji-picker-react';
 import './Modal.css';
 

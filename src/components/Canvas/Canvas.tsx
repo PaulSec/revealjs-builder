@@ -23,9 +23,9 @@ const Canvas = () => {
 
   const [showImageModal, setShowImageModal] = useState(false);
   const canvasRef = useRef<HTMLDivElement>(null);
-  
+
   const currentSlide = deck.slides[currentSlideIndex];
-  
+
   if (!currentSlide) return null;
 
   const handleCanvasClick = (e: React.MouseEvent) => {
@@ -81,14 +81,14 @@ const Canvas = () => {
             <Type size={16} />
             <span>Add Text</span>
           </button>
-          
+
           <button onClick={() => setShowImageModal(true)} className="icon-button">
             <ImageIcon size={16} />
             <span>Add Image</span>
           </button>
-          
+
           <div className="divider-vertical"></div>
-          
+
           <label className="flex-row" style={{ cursor: 'pointer', margin: 0 }}>
             <input
               type="checkbox"
@@ -99,7 +99,7 @@ const Canvas = () => {
             <span>Snap to Grid</span>
           </label>
         </div>
-        
+
         {selectedElement && (
           <div className="flex-row">
             <button
@@ -109,7 +109,7 @@ const Canvas = () => {
             >
               <ArrowUp size={16} />
             </button>
-            
+
             <button
               onClick={() => sendElementBackward(currentSlide.id, selectedElementId!)}
               className="icon-button"
@@ -117,7 +117,7 @@ const Canvas = () => {
             >
               <ArrowDown size={16} />
             </button>
-            
+
             <button
               onClick={() => deleteElement(currentSlide.id, selectedElementId!)}
               className="icon-button danger"
@@ -138,8 +138,8 @@ const Canvas = () => {
             currentSlide.background.type === 'color'
               ? currentSlide.background.value
               : currentSlide.background.type === 'image'
-              ? `url(${currentSlide.background.value})`
-              : currentSlide.background.value,
+                ? `url(${currentSlide.background.value})`
+                : currentSlide.background.value,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -152,8 +152,8 @@ const Canvas = () => {
                 key={element.id}
                 position={{ x: element.x, y: element.y }}
                 size={{ width: element.width, height: element.height }}
-                onDragStop={(e, d) => handleElementDrag(element.id, d.x, d.y)}
-                onResizeStop={(e, direction, ref, delta, position) => {
+                onDragStop={(_e, d) => handleElementDrag(element.id, d.x, d.y)}
+                onResizeStop={(_e, _direction, ref, _delta, position) => {
                   handleElementResize(
                     element.id,
                     parseInt(ref.style.width),
@@ -166,7 +166,7 @@ const Canvas = () => {
                 resizeGrid={[snapGrid, snapGrid]}
                 bounds="parent"
                 className={`canvas-element ${selectedElementId === element.id ? 'selected' : ''}`}
-                onClick={(e) => {
+                onClick={(e: React.MouseEvent) => {
                   e.stopPropagation();
                   selectElement(element.id);
                 }}
